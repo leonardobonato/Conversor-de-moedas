@@ -3,6 +3,7 @@ const select = document.getElementById('currency-select') //pra pegar meu select
 
 const dolar = 5.2
 const euro = 5.5
+const coin = 141.445
 
 const convertValues = () => {
     const inputReais = document.getElementById('input-real').value //.value é pra pegar somente o valor do meu input, só o que foi digitado
@@ -28,7 +29,13 @@ const convertValues = () => {
 
 
     }
+    
+    if(select.value ==='BitCoin'){
+        currencyValueText.innerHTML = new Intl.NumberFormat('BTC', //Pra formatar meu valor pra moeda bitcoin
+        { style: 'currency', currency: 'BTC' }
+    ).format(inputReais / coin);
 
+    }
 
 }
 
@@ -46,6 +53,11 @@ changeCurrency = () => {
     if (select.value === '$ Dólar americano') {
         currencyName.innerHTML = "Dólar americano"
         currencyImg.src = "./img/dolar 1.png"
+    }
+
+    if(select.value === 'BitCoin'){
+        currencyName.innerHTML = "BitCoin"
+        currencyImg.src = "./img/bitcoin.png"
     }
 
     convertValues()
